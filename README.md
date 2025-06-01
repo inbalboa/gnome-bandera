@@ -1,4 +1,4 @@
-# Bandera — Keyboard Layout Indicator for GNOME Shell Extension
+# Bandera — Keyboard Layout Indicator for GNOME Shell
 
 A GNOME Shell extension to display the current keyboard layout as a country flag in the top panel, making it easy to see and switch between different keyboard layouts at a glance.
 
