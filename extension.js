@@ -94,13 +94,14 @@ const LAYOUT_FLAGS = {
     'default': '⌨️'
 };
 
-const Bandera = GObject.registerClass(
-    class Bandera extends PanelMenu.Button {
+const BanderaIndicator = GObject.registerClass(
+    class BanderaIndicator extends PanelMenu.Button {
         _init(extension) {
-            super._init(0.0, 'Bandera');
+            super._init(0.0, 'BanderaIndicator');
 
             this._settings = extension.getSettings();
-            this._watching = null;
+            this._keyboard = panel.statusArea.keyboard;
+            this._keyboardWatching = null;
 
             this._flagLabel = new St.Label({
                 text: LAYOUT_FLAGS.default,
@@ -307,15 +308,15 @@ const Bandera = GObject.registerClass(
 
         _switchSystemIndicator() {
             const hide = this._settings.get_boolean('hide-system-indicator');
-            const keyboard = panel.statusArea.keyboard;
             if (hide) {
-                keyboard.hide()
-                this._watching = keyboard.connect('notify::visible', () => keyboard.hide());
+                this._keyboard.hide()
+                this._keyboardWatching = this._keyboard.connect('notify::visible', () => this._keyboard.hide());
             } else {
-                if (this._watching) {
-                    keyboard.disconnect(this._watching)
+                if (this._keyboardWatching) {
+                    this._keyboard.disconnect(this._keyboardWatching);
+                    this._keyboardWatching = null;
                 }
-                keyboard.show()
+                this._keyboard.show();
             }
         }
 
@@ -346,9 +347,11 @@ const Bandera = GObject.registerClass(
                 this._settings.disconnect(this._settingsConnection);
                 this._settingsConnection = null;
             }
-            if (this._watching) {
-                this._watching = null;
+            if (this._keyboardWatching) {
+                this._keyboard.disconnect(this._keyboardWatching);
+                this._keyboardWatching = null;
             }
+            this._keyboard.show();
             super.destroy();
         }
     }
@@ -356,8 +359,8 @@ const Bandera = GObject.registerClass(
 
 export default class BanderaExtension extends Extension {
     enable() {
-        this._indicator = new Bandera(this);
-        Main.panel.addToStatusArea('bandera', this._indicator, Main.panel._rightBox.get_n_children() - 1, 'right');
+        this._indicator = new BanderaIndicator(this);
+        Main.panel.addToStatusArea('bandera-indicator', this._indicator, Main.panel._rightBox.get_n_children() - 1, 'right');
     }
 
     disable() {
