@@ -186,8 +186,8 @@ const BanderaIndicator = GObject.registerClass(
                     item.setOrnament(PopupMenu.Ornament.RADIO);
                 }
                 item.connect('activate', () => {
-                    source.activate(true);
                     item._parent._getTopMenu().close();
+                    source.activate(true);
                 });
                 this._layoutSection.addMenuItem(item);
             }
