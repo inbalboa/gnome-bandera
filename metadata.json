@@ -1,6 +1,6 @@
 {
   "uuid": "bandera@inbalboa.github.io",
-  "name": "Bandera",
+  "name": "Bandera - Keyboard Layout Indicator",
   "description": "Shows the current keyboard layout as a country flag in the top panel",
   "donations": {
     "github": "inbalboa"
