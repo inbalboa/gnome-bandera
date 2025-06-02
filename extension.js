@@ -3,15 +3,14 @@ import Clutter from 'gi://Clutter';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
-import * as ModalDialog from 'resource:///org/gnome/shell/ui/modalDialog.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
-import { panel } from 'resource:///org/gnome/shell/ui/main.js'
-import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+import {panel} from 'resource:///org/gnome/shell/ui/main.js';
+import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 const LAYOUT_FLAGS = {
     'us': '🇺🇸',
-    'gb': '🇬🇧', 
+    'gb': '🇬🇧',
     'de': '🇩🇪',
     'fr': '🇫🇷',
     'es': '🇪🇸',
@@ -90,8 +89,8 @@ const LAYOUT_FLAGS = {
     'ge': '🇬🇪',
     'md': '🇲🇩',
     'me': '🇲🇪',
-    'xk': '🇽🇰', 
-    'default': '⌨️'
+    'xk': '🇽🇰',
+    'default': '⌨️',
 };
 
 const BanderaIndicator = GObject.registerClass(
@@ -106,7 +105,7 @@ const BanderaIndicator = GObject.registerClass(
             this._flagLabel = new St.Label({
                 text: LAYOUT_FLAGS.default,
                 style_class: 'bandera-label',
-                y_align: Clutter.ActorAlign.CENTER
+                y_align: Clutter.ActorAlign.CENTER,
             });
             this.add_child(this._flagLabel);
 
@@ -148,7 +147,7 @@ const BanderaIndicator = GObject.registerClass(
             const currentSource = this._inputSourceManager.currentSource;
             let labelText = LAYOUT_FLAGS.default;
 
-            for (const [id, source] of Object.entries(sources)) {
+            for (const [, source] of Object.entries(sources)) {
                 const layoutId = this._extractLayoutId(source.id);
                 const flag = this._getFlag(layoutId);
                 const displayName = source.displayName || source.id;
@@ -157,14 +156,14 @@ const BanderaIndicator = GObject.registerClass(
 
                 const itemBox = new St.BoxLayout({
                     vertical: false,
-                    x_expand: true
+                    x_expand: true,
                 });
 
                 // name on the left
                 const nameLabel = new St.Label({
                     text: displayName,
                     x_expand: true,
-                    x_align: Clutter.ActorAlign.START
+                    x_align: Clutter.ActorAlign.START,
                 });
                 itemBox.add_child(nameLabel);
 
@@ -172,7 +171,7 @@ const BanderaIndicator = GObject.registerClass(
                 let flagLabel = new St.Label({
                     text: flag,
                     x_align: Clutter.ActorAlign.END,
-                    style: 'margin-left: 10px;'
+                    style: 'margin-left: 10px;',
                 });
                 itemBox.add_child(flagLabel);
 
@@ -233,7 +232,7 @@ const BanderaIndicator = GObject.registerClass(
                     'm17n:gu:itrans': 'in',
                     'm17n:pa:itrans': 'in',
                     'm17n:or:itrans': 'in',
-                    'm17n:as:itrans': 'in'
+                    'm17n:as:itrans': 'in',
                 };
                 return ibusMapping[engine] || 'default';
             }
@@ -296,12 +295,11 @@ const BanderaIndicator = GObject.registerClass(
                 'spanish(mexico)': 'mx',
                 'canadian': 'ca',
                 'australian': 'au',
-                'newzealand': 'nz'
+                'newzealand': 'nz',
             };
 
-            if (mappings[layoutId]) {
+            if (mappings[layoutId])
                 layoutId = mappings[layoutId];
-            }
 
             return LAYOUT_FLAGS[layoutId] || LAYOUT_FLAGS.default;
         }
@@ -309,7 +307,7 @@ const BanderaIndicator = GObject.registerClass(
         _switchSystemIndicator() {
             const hide = this._settings.get_boolean('hide-system-indicator');
             if (hide) {
-                this._keyboard.hide()
+                this._keyboard.hide();
                 this._keyboardWatching = this._keyboard.connect('notify::visible', () => this._keyboard.hide());
             } else {
                 if (this._keyboardWatching) {
@@ -324,8 +322,8 @@ const BanderaIndicator = GObject.registerClass(
             try {
                 Gio.Subprocess.new(['tecla'], Gio.SubprocessFlags.NONE);
             } catch (e) {
-                console.error('Could not open keyboard settings:', e);
-                Main.notify('Bandera', _('No keyboard layout viewer found. Install Tecla or similar.'));
+                console.error('Could not open keyboard layout viewer:', e);
+                Main.notify('Bandera', _('No keyboard layout viewer found. Install Tecla.'));
             }
         }
 

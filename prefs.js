@@ -4,7 +4,7 @@ import Gtk from 'gi://Gtk';
 import GObject from 'gi://GObject';
 
 import * as Config from 'resource:///org/gnome/Shell/Extensions/js/misc/config.js';
-import { ExtensionPreferences, gettext as _ } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 export default class BanderaMenuPrefs extends ExtensionPreferences {
     fillPreferencesWindow(window) {
@@ -51,7 +51,7 @@ export const AboutPage = GObject.registerClass(class BanderaAboutPage extends Ad
         });
 
         const PROJECT_IMAGE = 'bandera-logo';
-        const EXTERNAL_LINK_ICON = 'adw-external-link-symbolic'
+        const EXTERNAL_LINK_ICON = 'adw-external-link-symbolic';
 
         const banderaGroup = new Adw.PreferencesGroup();
         const banderaBox = new Gtk.Box({
@@ -95,12 +95,7 @@ export const AboutPage = GObject.registerClass(class BanderaAboutPage extends Ad
         const banderaVersionRow = new Adw.ActionRow({
             title: _('Bandera Version'),
         });
-        let releaseVersion;
-        if (metadata['version-name']) {
-            releaseVersion = metadata['version-name'];
-        } else {
-            releaseVersion = 'unknown';
-        }
+        const releaseVersion = metadata['version-name'] ? metadata['version-name'] : 'unknown';
         banderaVersionRow.add_suffix(new Gtk.Label({
             label: `${releaseVersion}`,
         }));
@@ -132,7 +127,7 @@ export const AboutPage = GObject.registerClass(class BanderaAboutPage extends Ad
         });
         contributorRow.add_suffix(new Gtk.LinkButton({
             icon_name: EXTERNAL_LINK_ICON,
-            uri: 'https://github.com/inbalboa/gnome-bandera/graphs/contributors'
+            uri: 'https://github.com/inbalboa/gnome-bandera/graphs/contributors',
         }));
 
         extensionInfoGroup.add(banderaVersionRow);
