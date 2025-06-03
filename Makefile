@@ -1,4 +1,4 @@
-UUID='bandera@inbalboa.github.io'
+UUID=`jq -r '.uuid' metadata.json`
 TAG=`jq -r '."version-name"' metadata.json`
 
 check:
