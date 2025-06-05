@@ -3,7 +3,7 @@
   <schema id="org.gnome.shell.extensions.bandera" path="/org/gnome/shell/extensions/bandera/">
     <key name="hide-system-indicator" type="b">
       <default>false</default>
-      <summary>Hide a sysmtem indicator </summary>
+      <summary>Hide a system indicator </summary>
       <description>Hide a system keyboard layout indicator in the status bar</description>
     </key>
   </schema>

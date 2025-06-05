@@ -34,8 +34,8 @@ export const SettingsPage = GObject.registerClass(class BanderaSettingsPage exte
         this.add(mainGroup);
 
         const hideRow = new Adw.SwitchRow({
-            title: _('Hide system indicator'),
-            subtitle: _('Hide the system indicator not to double information in the status area'),
+            title: _('Hide a system indicator'),
+            subtitle: _('Hide a system indicator not to double information in the status area'),
             active: this._settings.get_boolean('hide-system-indicator'),
         });
         hideRow.connect('notify::active', () => this._settings.set_boolean('hide-system-indicator', hideRow.get_active()));

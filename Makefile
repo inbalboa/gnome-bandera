@@ -32,7 +32,11 @@ clean:
 
 build: clean
 	@printf "==> packaging...\n"
-	@gnome-extensions pack --force --extra-source="LICENSE" --extra-source="media"
+	@gnome-extensions pack --force \
+	--extra-source="LICENSE" \
+	--extra-source="media" \
+	--extra-source="layoutItem.js" \
+	--extra-source="flags.js"
 
 release: check tag pub
 	@printf "\nPublished at %s\n\n" "`date`"
