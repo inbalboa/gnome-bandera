@@ -8,7 +8,7 @@
   "gettext-domain": "bandera",
   "settings-schema": "org.gnome.shell.extensions.bandera",
   "version": 1,
-  "version-name": "1.0.0",
+  "version-name": "1.1.0",
   "shell-version": ["48"],
   "url": "https://github.com/inbalboa/gnome-bandera/"
 }
