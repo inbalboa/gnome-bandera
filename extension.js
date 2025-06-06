@@ -94,24 +94,22 @@ const BanderaIndicator = GObject.registerClass(
         _updateLayoutItems() {
             const currentSource = this._inputSourceManager.currentSource;
             const isNewLayouts = this._refillLayoutItems();
+
             let labelText;
             this._layoutItems.forEach(i => {
-                const isActive = currentSource && i._sourceId === currentSource.id;
-                if (isActive) {
-                    i.setOrnament(PopupMenu.Ornament.DOT);
+                if (currentSource && i._sourceId === currentSource.id) {
+                    i.makeActive();
                     labelText = i._flagSmb;
                 } else {
-                    i.setOrnament(PopupMenu.Ornament.NONE);
-                    i.setOrnament(PopupMenu.Ornament.RADIO);
+                    i.makeInactive();
                 }
             });
+            this._flagLabel.text = labelText || this._flagMapper.getDefault();
 
             if (isNewLayouts) {
                 this._layoutSection.removeAll();
                 this._layoutItems.forEach(i => this._layoutSection.addMenuItem(i));
             }
-
-            this._flagLabel.text = labelText || this._flagMapper.getDefault();
         }
 
         _onLayoutChanged() {

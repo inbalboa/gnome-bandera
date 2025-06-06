@@ -45,6 +45,15 @@ class LayoutMenuItem extends PopupMenu.PopupBaseMenuItem {
         });
     }
 
+    makeActive() {
+        this.setOrnament(PopupMenu.Ornament.DOT);
+    }
+
+    makeInactive() {
+        this.setOrnament(PopupMenu.Ornament.NONE);
+        this.setOrnament(PopupMenu.Ornament.RADIO);
+    }
+
     destroy() {
         super.destroy();
     }
