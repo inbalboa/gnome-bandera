@@ -1,8 +1,11 @@
-# Bandera — Keyboard Layout Indicator for GNOME Shell
+# Bandera* — Keyboard Layout Indicator for GNOME Shell
+[<img src="https://raw.githubusercontent.com/andyholmes/gnome-shell-extensions-badge/master/get-it-on-ego.svg?sanitize=true" height="100">](https://extensions.gnome.org/extension/8237/bandera-keyboard-layout-indicator/)
 
 A GNOME Shell extension to display the current keyboard layout as a country flag in the top panel, making it easy to see and switch between different keyboard layouts at a glance.
 
 ![Extension Screenshot](screenshot.png)
+
+*_La bandera - 'the flag' in Spanish_
 
 ## Features
 
@@ -13,6 +16,10 @@ It's like the system GNOME Shell layout indicator, but with flags.
 - GNOME Shell 48+
 
 ## Installation
+
+### From GNOME Extensions
+
+https://extensions.gnome.org/extension/8237/bandera-keyboard-layout-indicator/
 
 ### Manual Installation
 
@@ -43,7 +50,7 @@ You can still use your regular keyboard shortcuts (e.g., `Super + Space`) to swi
 
 ## Configuration
 
-You can hide a system keyboard layout indicator (with letters) in the extension settings page.
+You can hide the system keyboard layout indicator (with letters) in the extension settings page.
 
 ## Troubleshooting
 
