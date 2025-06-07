@@ -43,7 +43,7 @@ You can still use your regular keyboard shortcuts (e.g., `Super + Space`) to swi
 
 ## Configuration
 
-You can hide a system keyboard layout indicator (with letters) in the extension settings page.
+You can hide the system keyboard layout indicator (with letters) in the extension settings page.
 
 ## Troubleshooting
 
